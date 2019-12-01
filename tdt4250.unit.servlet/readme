@@ -1,0 +1,27 @@
+readme:
+
+tdt4250.unit.api:
+	-Unit: interface for what all units contains
+	-UnitConverter: method for converting from one unit to another
+	-UnitConversionResult: results contains a node and a boolean saying if they are valid or not
+	
+tdt4250.unit.gogo.Gogos: contains method for adding new conversions for existing units in gogo shell
+
+tdt4250.unit.meter.Meter: existing unit implementing Unit
+tdt4250.unit.newton.Newton: existing unit implementing Unit
+
+tdt4250.unit.servlet.Servlet: component that handles the input in browser and output
+
+tdt4250.unit.util.UnitUtil: used to create new unit conversions in gogo shell
+
+
+Launch:
+
+open launch.bndrun and press "Run OSGi". Enter "http://localhost:8080/convert?q=np1234" in browser. The first letter after the '=' is the
+start unit, the second letter is the end unit, and the number behind is the value.
+
+To add another unit before running: press new->Bnd OSGi Project->and choose template "Component development". Add build dependencies in bnd.bnd to
+tdt4250.unit.api and tdt4250.unit.util and add the new project to run dependencies in launch.bndrun in tdt4250.unit.servlet. Remember to clean and rebuild.
+
+To add another unit in gogo (runtime), enter in the console: g! add "x=m*0.0001". The end unit is first, then after '=' is the start unit (which
+must exist) and the number after '*' is the factor.
